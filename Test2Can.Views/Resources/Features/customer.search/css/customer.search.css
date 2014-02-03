@@ -1,0 +1,17 @@
+.b-search-form__container {
+	padding-top: 65px;
+	height: 900px;
+}
+
+.b-search-form {
+	width: 80%;
+	float: left;
+}
+
+.b-search-form_search {
+	margin-top: -14px;
+}
+
+.b-search-form_table {
+	font-size: 13px;
+}

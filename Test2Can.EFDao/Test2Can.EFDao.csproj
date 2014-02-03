@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F6C20532-4B4F-4C32-A445-A570AA76D887}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Test2Can.EFDao</RootNamespace>
+    <AssemblyName>Test2Can.EFDao</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entity\Categories.cs">
+      <DependentUpon>NorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\CustomerDemographics.cs">
+      <DependentUpon>NorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Customers.cs">
+      <DependentUpon>NorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Employees.cs">
+      <DependentUpon>NorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\NorthWind.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthWind.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\NorthWind.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\NorthWind.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthWind.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Orders.cs">
+      <DependentUpon>NorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Order_Details.cs">
+      <DependentUpon>NorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Products.cs">
+      <DependentUpon>NorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Region.cs">
+      <DependentUpon>NorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Shippers.cs">
+      <DependentUpon>NorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Suppliers.cs">
+      <DependentUpon>NorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\sysdiagrams.cs">
+      <DependentUpon>NorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Territories.cs">
+      <DependentUpon>NorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\QueryExtension.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryHandlers\Customers\GetCustomersHandler.cs" />
+    <Compile Include="QueryHandlers\Customers\GetCitiesByCountryHandler.cs" />
+    <Compile Include="QueryHandlers\Customers\GetAllCustomerCountriesHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Test2Can.Query\Test2Can.Queries.csproj">
+      <Project>{B8665C50-7B0D-465B-9FB9-F3CF7928CDAC}</Project>
+      <Name>Test2Can.Queries</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Entity\NorthWind.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NorthWind.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Entity\NorthWind.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NorthWind.edmx</DependentUpon>
+      <LastGenOutput>NorthWind.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Entity\NorthWind.edmx.diagram">
+      <DependentUpon>NorthWind.edmx</DependentUpon>
+    </None>
+    <None Include="Entity\NorthWind.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NorthWind.edmx</DependentUpon>
+      <LastGenOutput>NorthWind.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

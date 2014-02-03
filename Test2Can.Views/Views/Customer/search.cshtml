@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/index.layout.cshtml";
+}
+@model Test2Can.Web.Models.Customers.CustomerSearchIndexModel
+
+<div class="container">
+	<div class="jumbotron b-search-form__container">
+		<div class="b-search-form">
+			<form class="j_search_form">
+				<div class="row">
+					<div class="col-xs-2">
+						<input type="text" name="CompanyName" title="Company name" class="form-control">
+					</div>
+					<div class="col-xs-2">
+						<select name="Country" title="Country" class="form-control j-search-form_country">
+							<option value="" selected="selected">-</option>
+							@foreach (var country in Model.CustomerCountries) {
+								<option value="@country">@country</option>
+							}
+						</select>
+					</div>
+					<div class="col-xs-2">
+						<select name="City" title="City" class="form-control j-search-form_city">
+							<option value="">-</option>
+						</select>
+					</div>
+					<div class="col-xs-2">
+						<select name="Order" title="Order" class="form-control">
+							<option value="">-</option>
+							<option value="CustomerID">CustomerID</option>
+							<option value="CompanyName">CompanyName</option>
+							<option value="ContactName">ContactName</option>
+							<option value="ContactTitle">ContactTitle</option>
+							<option value="Address">Address</option>
+							<option value="City">City</option>
+							<option value="Region">Region</option>
+							<option value="PostalCode">PostalCode</option>
+							<option value="Country">Country</option>
+							<option value="Phone">Phone</option>
+							<option value="Fax">Fax</option>
+						</select>
+					</div>
+					<div class="col-xs-2">
+						<button type="submit" class="btn btn-primary b-search-form_search">Search</button>
+					</div>
+				</div>
+			</form>
+				<table class="j-search-form_result table b-search-form_table table-striped table-bordered table-condensed">
+						<thead>
+								<tr>
+										<th>CustomerID</th>
+										<th>Company</th>
+										<th>Name</th>
+										<th>Contract Title</th>
+										<th>Address</th>
+										<th>City</th>
+										<th>Region</th>
+										<th>PostalCode</th>
+										<th>Country</th>
+										<th>Phone</th>
+										<th>Fax</th>
+								</tr>
+						</thead>
+						<tbody>
+						</tbody>
+				</table>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="@Url.Content("~/Resources/Features/customer.search/js/customer.search.js")"></script>
+
+
